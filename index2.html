@@ -16,21 +16,25 @@
     <script type="text/babel">
       var HelloWorld = React.createClass({
         render:function(){
+          console.log("render-----HelloWorld")
           return <h1>hello {this.props.name} </h1>
         }
       })
 
       var Hello = React.createClass({
         getInitialState:function(){
+          console.log("getInitialState")
           return {"name":""}
         },
         render:function(){
+          console.log("render----Hello")
           return  <div><HelloWorld name={this.state.name}></HelloWorld>
                   <br/>
                   <input type="text" onChange={this.handleChange} />
                   </div>
         },
         handleChange:function(event){
+          console.log("handleChange")
           this.setState({name: event.target.value})
         }
       })
