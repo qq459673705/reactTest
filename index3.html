@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="libs/css/bootstrap.css" media="screen" title="no title" charset="utf-8">
+    <title>index3</title>
+  </head>
+  <body>
+    <div class="container" id="test1">
+
+    </div>
+    <script src="http://code.jquery.com/jquery-2.2.2.min.js"></script>
+    <script type="text/javascript" src="libs/js/react.js"></script>
+    <script type="text/javascript" src="libs/js/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script type="text/babel">
+      var HelloWorld = React.createClass({
+        render:function(){
+          console.log("#####" + this.props.name)
+          if(this.props.name == "123"){
+            return <div>helloworld</div>
+          }else{
+            return <h1>hello {this.props.name?this.props.name:'name'} </h1>
+          }
+        },
+        componentWillUnmount:function(){
+          console.log("helloworld is over!")
+        }
+      })
+
+      var Hello = React.createClass({
+        getInitialState:function(){
+          console.log("getInitialState")
+          return {"name":""}
+        },
+        render:function(){
+          console.log("render----Hello")
+          // if(this.state.name == "123"){
+          //   return <div>123</div>
+          // }else{
+            return  <div><HelloWorld name={this.state.name}></HelloWorld>
+                    <br/>
+                    <input type="text" onChange={this.handleChange} />
+                    </div>
+          // }
+        },
+        handleChange:function(event){
+          console.log("handleChange")
+          if(event.target.value == "123"){
+            ReactDOM.unmountComponentAtNode(document.getElementById('test1'))
+            return
+          }
+          this.setState({name: event.target.value})
+        },
+        componentWillUnmount:function(){
+          console.log("componentWillUnmount")
+        }
+      })
+
+      ReactDOM.render(
+        <Hello name="livemore"/>,
+        document.getElementById('test1')
+      )
+    </script>
+  </body>
+</html>
