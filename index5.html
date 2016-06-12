@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="libs/css/bootstrap.css" media="screen" title="no title" charset="utf-8">
+    <title>index4</title>
+  </head>
+  <body>
+    <div class="container" id="content">
+
+    </div>
+    <script src="http://code.jquery.com/jquery-2.2.2.min.js"></script>
+    <script type="text/javascript" src="libs/js/react.js"></script>
+    <script type="text/javascript" src="libs/js/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script type="text/babel">
+      var HelloWorld = React.createClass({
+        render:function(){
+          return <h1>{this.props.name1 + "+++++" + this.props.name2}</h1>
+        }
+      })
+
+      var Hello = React.createClass({
+        getInitialState:function(){
+          return {name1:"jesse",name2:"livemore"}
+        },
+        render:function(){
+          return <HelloWorld name={this.props.name?this.props.name:'world'}></HelloWorld>
+        }
+      })
+
+      var hello =  ReactDOM.render(<Hello/>, document.getElementById('content'))
+      hello.setProps({name:'jesse'})  //此方法已被禁用，此时不能在使用了
+    </script>
+  </body>
+</html>
