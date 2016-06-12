@@ -32,7 +32,7 @@
         },
         render:function(obj){
           console.log("render")
-          return <h1>hello {function(obj){
+          return <h1>hello {function(obj){  //注意最后面一定要带上（this）执行此方法，否则根本无效
             if(obj.props.name){
               return obj.props.name
             }else{
